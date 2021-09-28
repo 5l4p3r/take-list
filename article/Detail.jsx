@@ -23,23 +23,30 @@ const Detail = () => {
     },[])
     return (
         <UserContext.Consumer>
-            {({userid})=>(
-                <ScrollView style={styles.container}>
-                    {article.map((item,i)=>(
-                        <View key={i}>
-                            <Title style={styles.title}>{item.title}</Title>
-                            <Paragraph style={styles.paragraf}>{item.content}</Paragraph>
-                            {userid == item.userid && 
-                                <View style={styles.nav}>
-                                    <Button icon="pen" mode="contained" style={styles.edit} onPress={()=>{
-                                        history.push(`/articleupdate/${item.id}`)
-                                    }}/>
-                                    <Button icon="delete" mode="contained" style={styles.del}/>
-                                </View>
-                            }
-                        </View>
-                    ))}
-                </ScrollView>
+            {({userid,setLoadarticle})=>(
+                <View style={styles.container}>
+                    <ScrollView style={styles.scv}>
+                        {article.map((item,i)=>(
+                            <View key={i}>
+                                <Title style={styles.title}>{item.title}</Title>
+                                <Paragraph style={styles.paragraf}>{item.content}</Paragraph>
+                                {userid == item.userid && 
+                                    <View style={styles.nav}>
+                                        <Button icon="pen" mode="outlined" style={styles.edit} onPress={()=>{
+                                            history.push(`/articleupdate/${item.id}`)
+                                        }}>Edit</Button>
+                                        <Button icon="delete" mode="outlined" style={styles.del} onPress={()=>{
+                                            axios.delete(`${url}/api/article/${id}`).then(()=>{
+                                                setLoadarticle(true)
+                                                history.push('/')
+                                            })
+                                        }}>DELETE</Button>
+                                    </View>
+                                }
+                            </View>
+                        ))}
+                    </ScrollView>
+                </View>
             )}
         </UserContext.Consumer>
     )
@@ -69,10 +76,13 @@ const styles = StyleSheet.create({
     },
     edit: {
         width: '49%',
-        backgroundColor: '#6dbfa8'
+        borderColor: '#6dbfa8'
     },
     del: {
         width: '49%',
-        backgroundColor: '#bf6d6d'
+        borderColor: '#bf6d6d'
+    },
+    scv: {
+        overflow: 'hidden',
     }
 })

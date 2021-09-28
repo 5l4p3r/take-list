@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         paddingBottom:20
     },
     textarea: {
-        height: 300,
+        height: 100,
         marginTop: 10,
         marginBottom: 20
     }

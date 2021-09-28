@@ -7,7 +7,7 @@ import { UserContext } from './hooks/UserContext'
 import About from './pages/About'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
-import { Button, TextInput } from 'react-native-paper'
+import { Button, TextInput, Title } from 'react-native-paper'
 import Detail from './article/Detail'
 import Edit from './article/Edit'
 
@@ -69,13 +69,13 @@ const App = () => {
           <View style={styles.btm}>
             <View style={styles.nav}>
               <Link to="/" style={styles.navItem}>
-                <Button icon="home" mode="text" style={styles.btnf}>Home</Button>
+                <Button icon="home" mode="text">Home</Button>
               </Link>
               <Link to="/profile" style={styles.navItem}>
-                <Button icon="home" mode="text" style={styles.btnf}>Profile</Button>
+                <Button icon="head" mode="text">Profile</Button>
               </Link>
               <Link to="/about" style={styles.navItem}>
-                <Button icon="home" mode="text" style={styles.btnf}>About</Button>
+                <Button icon="pen" mode="text">About</Button>
               </Link>
             </View>
           </View>
@@ -85,10 +85,12 @@ const App = () => {
   }else{
     return (
       <View style={styles.container}>
+        <Title>Take List Login System</Title>
         <TextInput 
           label="Email"
           onChangeText={(e)=>setEmail(e)}
           style={styles.input}
+          right={<TextInput.Icon name="email" />}
         />
         <TextInput
           label="Password"
@@ -132,11 +134,8 @@ const styles = StyleSheet.create({
     alignItems:'center'
   },
   input: {
-    height: 50,
     width: '95%',
     marginBottom: 10,
-    borderWidth: 1,
-    borderRadius: 10,
   },
   text: {
     fontSize: 18,
@@ -145,8 +144,5 @@ const styles = StyleSheet.create({
   btn: {
     height: 40,
     borderRadius: 10,
-  },
-  btnf: {
-    color: '#000000'
   },
 })

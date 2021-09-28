@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet,View } from 'react-native'
 import { Button, FAB, List, TextInput } from 'react-native-paper'
 import { useHistory } from 'react-router'
 import { UserContext } from '../hooks/UserContext'
@@ -14,7 +14,9 @@ const Home = () => {
         <UserContext.Consumer>
             {({articles})=>(
                 <View style={styles.container}>
-                    <TextInput label="Search..." onChangeText={(e)=>setSearch(e)} style={styles.search}/>
+                    <TextInput 
+                        label="Search..."
+                        onChangeText={(e)=>setSearch(e)} style={styles.search}/>
                     <ScrollView>
                         {articles.filter(filtered).map((item,i)=>(
                             <List.Item
@@ -60,8 +62,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#000000'
     },
     search: {
-        height: 50,
-        justifyContent: 'flex-end',
+        textDecorationColor: 'black'
     },
     btn: {
         fontSize: 40

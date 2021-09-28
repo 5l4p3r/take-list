@@ -37,7 +37,7 @@ const Edit = () => {
                         <View style={styles.container} key={i}>
                             <TextInput label="Title.." defaultValue={item.title} onChangeText={(e)=>setTitle(e)} />
                             <TextInput label="Content.." defaultValue={item.content} style={styles.textarea} onChangeText={(e)=>setContent(e)}/>
-                            <Button icon="book" style={styles.btn} mode="contained" onPress={()=>{
+                            <Button icon="book" style={styles.btn} mode="outlined" onPress={()=>{
                                 const fdata = {
                                     id: id,
                                     title: title,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
         paddingBottom:20
     },
     textarea: {
-        height: 200,
+        height: 100,
         marginTop: 10,
         marginBottom: 20
     },
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
         height: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        zIndex: 1
+        zIndex: 1,
+        borderColor: '#6dbfa8'
     }
 })
